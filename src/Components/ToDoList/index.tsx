@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import Styled from 'styled-components';
-import ToDoItem from 'Components/ToDoItem';
-import { ToDoListContext } from 'Contexts/ToDoList';
+import React, { useContext } from "react";
+import Styled from "styled-components";
+import { ToDoItem } from "Components";
+import { ToDoListContext } from "Contexts/ToDoList";
 
 const Container = Styled.div`
   min-width: 350px;
@@ -11,16 +11,19 @@ const Container = Styled.div`
   margin-bottom: 20px;
 `;
 
-const ToDoList = () => {
+export const ToDoList = () => {
   const { toDoList, deleteToDo } = useContext(ToDoListContext);
 
   return (
     <Container data-testid="toDoList">
       {toDoList.map((item, index) => (
-        <ToDoItem key={item} label={item} onDelete={() => deleteToDo(index)} />
+        <ToDoItem
+          key={item}
+          id={index}
+          label={item}
+          onDelete={() => deleteToDo(index)}
+        />
       ))}
     </Container>
   );
 };
-
-export default ToDoList;

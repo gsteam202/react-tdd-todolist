@@ -1,8 +1,9 @@
-import React  from 'react';
-import Styled from 'styled-components';
-import InputContainer from 'Components/InputContainer';
-import ToDoList from 'Components/ToDoList';
-import { ToDoListProvider } from 'Contexts/ToDoList';
+import React from "react";
+import Styled from "styled-components";
+import { ToDoListProvider } from "Contexts";
+import { PageHeader } from "./Components";
+import { Routes, Route } from "react-router-dom";
+import { List, Add, Detail, NotFound } from "Pages";
 
 const Container = Styled.div`
   min-height: 100vh;
@@ -12,23 +13,17 @@ const Container = Styled.div`
   flex-direction: column;
 `;
 
-const Contents = Styled.div`
-  display: flex;
-  background-color: #ffffff;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-`;
-
 function App() {
   return (
     <ToDoListProvider>
       <Container>
-        <Contents>
-          <ToDoList />
-          <InputContainer />
-        </Contents>
+        <PageHeader />
+        <Routes>
+          <Route element={<List />} path="/" />
+          <Route element={<Add />} path="/add" />
+          <Route element={<Detail />} path="/detail:id" />
+          <Route element={<NotFound />} path="*" />
+        </Routes>
       </Container>
     </ToDoListProvider>
   );

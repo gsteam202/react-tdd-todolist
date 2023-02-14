@@ -1,5 +1,5 @@
-import React from 'react';
-import Styled from 'styled-components';
+import React from "react";
+import Styled from "styled-components";
 
 const InputBox = Styled.input`
   flex: 1;
@@ -16,14 +16,16 @@ interface Props {
   readonly onChange?: (text: string) => void;
 }
 
-const Input = ({placeholder, value, onChange}: Props) => {
+export const Input = ({ placeholder, value, onChange }: Props) => {
   return (
-    <InputBox placeholder={placeholder} value={value} onChange={(event) => {
-      if (typeof onChange === 'function') {
-        onChange(event.target.value);
-      }
-    }} />
+    <InputBox
+      placeholder={placeholder}
+      value={value}
+      onChange={(event) => {
+        if (typeof onChange === "function") {
+          onChange(event.target.value);
+        }
+      }}
+    />
   );
 };
-
-export default Input;

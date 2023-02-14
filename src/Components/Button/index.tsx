@@ -1,5 +1,5 @@
-import React from 'react';
-import Styled from 'styled-components';
+import React from "react";
+import Styled from "styled-components";
 
 interface ContainerProps {
   readonly backgroundColor?: string;
@@ -32,12 +32,19 @@ interface Props {
   readonly onClick?: () => void;
 }
 
-const Button = ({ label, backgroundColor = '#304ffe', hoverColor = '#1e40ff', onClick }: Props) => {
+export const Button = ({
+  label,
+  backgroundColor = "#304ffe",
+  hoverColor = "#1e40ff",
+  onClick,
+}: Props) => {
   return (
-    <Container backgroundColor={backgroundColor} hoverColor={hoverColor} onClick={onClick}>
+    <Container
+      backgroundColor={backgroundColor}
+      hoverColor={hoverColor}
+      onClick={onClick}
+    >
       <Label>{label}</Label>
     </Container>
   );
 };
-
-export default Button;
